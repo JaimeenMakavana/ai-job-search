@@ -1,164 +1,113 @@
-%% Example CV - [YOUR_NAME]
-%% Comprehensive overview of all competencies, experience, and achievements.
-%% Use as a master reference when tailoring role-specific CVs.
-%%
-%% SETUP: Run /setup to populate this with your actual information.
+%% Master CV - Jaimeen Makavana
+%% Source: documents/cv/jaimeen_makavana.pdf
 %% Compile with: lualatex main_example.tex
-%% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
 \documentclass[11pt,a4paper,sans]{moderncv}
 \moderncvstyle{banking}
 \moderncvcolor{blue}
 
-% Force both first and last name AND section headings to render in moderncv
-% blue (color1). Default banking on lualatex+MiKTeX leaves these black, which
-% looks inconsistent with the rest of the blue accent scheme.
 \renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
 \renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{color1}#1}}
 \renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
 
 \usepackage[utf8]{inputenc}
+\usepackage{needspace}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Jaimeen Makavana - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
 
-% personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Jaimeen}{Makavana}
+\address{Ahmedabad, India}{}{}
+\phone[mobile]{+91 9737114083}
+\email{jaimeen.makavana@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/jaimeen-makavana}{LinkedIn}, \href{https://github.com/JaimeenMakavana}{GitHub}, \href{https://jaimeen-makavana-portfolio.vercel.app/}{Portfolio}}
 
 \begin{document}
 
 \makecvtitle
 
-% ============================================================
-%     PROFILE STATEMENT
-% ============================================================
-
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
-
-% ============================================================
-%     CORE COMPETENCIES
-% ============================================================
+\small{Senior Frontend Architect (7.5+ years) specializing in React, Next.js and TypeScript, building scalable AI-native web applications. Experience in frontend architecture, reusable component systems, API integrations, performance optimization and cross-functional product delivery. Focus on developer experience, maintainability, conversational interfaces and modern frontend engineering.}
 
 \section{Core Competencies}
 \vspace{1pt}
 \begin{itemize}
-
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
-
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
-
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
-
+\item \textbf{Frontend}: React.js, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS
+\item \textbf{Architecture}: Component architecture, SSR, CSR, SSG, Headless, Next.js Server Components, Proxy BFF
+\item \textbf{AI (as listed)}: LLM workflows, RAG, conversational UI
+\item \textbf{Performance}: Core Web Vitals, code splitting, memoization
+\item \textbf{State / data}: Redux Toolkit, Zustand, TanStack Query, GraphQL, sockets
+\item \textbf{Quality / ship}: Jest, Playwright, Git, CI/CD, Vercel; GSAP
 \end{itemize}
-
-% ============================================================
-%     PROFESSIONAL EXPERIENCE
-% ============================================================
 
 \section{Professional Experience}
 \vspace{3pt}
 \begin{itemize}
 
-% --- Most Recent Role ---
-\item{\cventry{[YYYY-Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{Jan 2026--Present}{Senior Frontend Architect}{GoldenRay.cloud}{}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Architected a hybrid Next.js Server Components + Proxy BFF architecture to secure backend services while preserving performance for highly interactive applications
+    \item Led migration of virtualization platforms (KubeVirt, OpenStack and Redfish) from client-side to server-side rendering with successful regression validation
+    \item Established the frontend foundation for consolidating multiple infrastructure services into a unified platform
+    \item Collaborated across product, backend and infrastructure teams to deliver scalable, production-grade cloud management interfaces
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Previous Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{Dec 2024--Jan 2026}{Senior Frontend Developer}{KEY.AI}{}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Revamped conversational platform by migrating chat workflows from REST to GraphQL, improving responsiveness and maintainability
+    \item Redesigned notification system into fully socket-based real-time architecture for low-latency updates
+    \item Built AI-powered community creation workflows replacing manual setup with prompt-driven automation
+    \item Designed reusable UI systems using React, Next.js, TypeScript and Tailwind CSS with AI and backend teams
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Earlier Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{Nov 2023--Dec 2024}{Frontend Engineer}{Koffeekodes Innovations}{}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Led frontend architecture for accounting platform and fintech product balancing high-interaction workflows and security
+    \item Revamped the company's marketing website using GSAP for rich interactive animations and improved engagement
+    \item Developed scalable React applications with reusable components, responsive design and performance optimizations
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{Jul 2019--Nov 2023}{Frontend Engineer}{Herryz Info Tech (WebApster)}{}{}{\vspace{1pt}
+\begin{itemize}
+    \item Delivered multiple production-grade web applications across e-commerce and enterprise domains using React and modern JavaScript
+    \item Built reusable component libraries improving development velocity and UI consistency
+    \item Collaborated with designers and backend engineers to build responsive, scalable customer-facing applications
 \end{itemize}}}
 
 \end{itemize}
-
-% ============================================================
-%     EDUCATION
-% ============================================================
 
 \section{Education}
 \vspace{1pt}
 \begin{itemize}
-
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
+\needspace{5\baselineskip}
+\item{\cventry{2016--2020}{B.E. Chemical Engineering}{L.D. College of Engineering}{Ahmedabad}{}{\vspace{1pt}
+CGPA: 8.43/10.
 }}
-
-\vspace{3pt}
-
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
-
 \end{itemize}
-
-% ============================================================
-%     LANGUAGES
-% ============================================================
 
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
+\item English (professional), Hindi (declared), Gujarati (declared).
 \end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
-\end{itemize}
-
-% ============================================================
-%     REFERENCES
-% ============================================================
 
 \section{References}
 \vspace{1pt}
