@@ -1,81 +1,100 @@
 # Search Queries for Job Scraper
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
+<!-- SETUP: India software / frontend / AI engineering. Do not overfit to exact titles. -->
 
 ## Installed portal CLIs (primary for `/scrape`)
 
-`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`; Danish demos and any skill you add with `/add-portal` are included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
+`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. For this fork:
 
-The `site:` query templates in this file are the **WebSearch fallback** — for portals without a CLI, company career pages, or when a CLI fails.
+- **Use:** `linkedin-search`, `freehire-search`
+- **Installed but skipped (`enabled: false`):** `jobbank-search`, `jobdanmark-search`, `jobindex-search`, `jobnet-search` (Danish demos — keep on disk, do not query for India)
 
-**Language scope:** write every query category in every language listed in your CLAUDE.md Languages table (typically 1-2, sometimes more). A posting requiring a language you have *not* declared, as a job condition, is excluded before scoring; a posting requiring a *higher level* than you declared in a language you *do* work in is flagged for your own judgment, not excluded — see `04-job-evaluation.md`'s Language Gate, the single source of truth for this rule. Translate each category's keywords rather than machine-translating word-for-word (e.g. "Frontend Developer" -> "Desarrollador Frontend", not a literal word-for-word translation) if you work in more than one language.
+The `site:` query templates below are the **WebSearch fallback** when a CLI is missing or fails.
+
+**Language scope:** English is the default working language for these queries. Apply `04-job-evaluation.md`'s Language Gate when filtering results.
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+Primary:
 
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+- **linkedin.com/jobs** — covered by `linkedin-search` (`--location` place strings below)
+- **freehire.me** — covered by `freehire-search` (`--country IN`; confirm live facets before using `--city`)
+- **naukri.com** — WebSearch fallback only until an India portal skill exists
+- **indeed.co.in** — WebSearch fallback only
+
+Secondary: company career pages via `site:` for named target companies once the user lists them.
 
 ## Query Categories
 
-Queries are grouped by priority. Write **each category in every language from your Languages table** (see Language scope above). Combine each query with your location terms (e.g. your city, region, or metro area) where the site supports it.
+Do not require an exact job title match. Prefer role-family keywords (frontend, React, Next.js, full stack, AI/LLM application engineering).
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
-
-These match your strongest and most desired career direction.
+### Priority 1: Frontend / React / Next.js
 
 ```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_COUNTRY]
+site:linkedin.com/jobs frontend engineer India
+site:linkedin.com/jobs React developer Bengaluru OR Pune OR Hyderabad
+site:linkedin.com/jobs Next.js developer India
+site:naukri.com "frontend engineer" Ahmedabad OR Bengaluru
+site:indeed.co.in "react developer" "India"
 ```
 
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
+LinkedIn CLI examples (low volume; `--limit` small; `--format json`):
 
-These match your domain expertise.
+- `-q "Frontend Engineer" -l "Ahmedabad, Gujarat, India"`
+- `-q "Frontend Engineer" -l "Bengaluru, Karnataka, India"`
+- `-q "React Developer" -l "Hyderabad, Telangana, India"`
+- `-q "Next.js" -l "Pune, Maharashtra, India"`
+- `-q "Frontend Engineer" -l "Mumbai, Maharashtra, India"`
+- `-q "Frontend Engineer" -l "Delhi, India"`
+- `-q "Frontend Engineer" -l "Chennai, Tamil Nadu, India"`
+- `-q "Frontend Engineer" -l "India" --remote remote`
 
-```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
-```
+FreeHire CLI: `-q "frontend"` or `-q "react"` with `--country IN`, optional `--category frontend`, `--limit` modest. Discover city facet values from `/api/v1/jobs/facets` — do not invent them.
 
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
-
-Adjacent roles you could pivot into.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
-```
-
-### Priority 4: Broader Technical / Consulting
-
-Wider net for general technical roles.
+### Priority 2: Software / full stack engineering
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+site:linkedin.com/jobs "software engineer" India React
+site:linkedin.com/jobs "full stack" engineer Bengaluru OR Hyderabad OR Pune
+site:naukri.com "software engineer" frontend India
+```
+
+### Priority 3: AI / LLM application engineering
+
+```
+site:linkedin.com/jobs "AI engineer" India
+site:linkedin.com/jobs "LLM" engineer India
+site:linkedin.com/jobs "AI application" engineer India
+site:linkedin.com/jobs frontend AI engineer India
+```
+
+FreeHire: `-q "AI engineer"` or `--category ml_ai` with `--country IN`.
+
+### Priority 4: Broader technical
+
+```
+site:linkedin.com/jobs "software engineer" India
+site:naukri.com developer React OR Next.js India
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+Acceptable for this fork (until the candidate profile narrows commute):
+
+- Ahmedabad
+- Bengaluru
+- Hyderabad
+- Pune
+- Mumbai
+- Delhi NCR
+- Chennai
+- Remote India (and remote roles that hire in India)
+
+Skip roles that require relocation outside India unless the user asks.
 
 ## Language Filter
 
-Your working languages and levels are in CLAUDE.md's Languages table. When filtering scraped results, apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language you haven't declared at all is excluded; a posting requiring a higher level than you declared in a language you do work in is not excluded, flag it clearly instead (see `job-scraper/SKILL.md`'s Step 3 "Quick Fit Assessment" for how the flag surfaces in `/scrape` output). Postings simply *written* in a language you don't work in, that don't require it on the job, are fine.
+Your working languages and levels are in CLAUDE.md's Languages table. When filtering scraped results, apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language you haven't declared at all is excluded; a posting requiring a higher level than you declared in a language you do work in is not excluded, flag it clearly instead.
 
 ## Date Filter
 
@@ -84,4 +103,5 @@ Only include jobs posted within the last 14 days, or with an application deadlin
 ## Adapting Queries
 
 If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
-- "/scrape [focus_area]" -> relevant category queries + custom focus-specific queries
+- "/scrape frontend" → Priority 1 + a few extra keyword variants
+- "/scrape AI" → Priority 3

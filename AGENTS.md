@@ -17,3 +17,5 @@ To prevent duplication and configuration drift across different AI agent framewo
    - Do not duplicate these rules or specifications. Treat `.claude/` files as the single source of truth.
 3. **Portal Search Skills:**
    - Job-portal search CLIs live under [.agents/skills/](.agents/skills/) in the portable Agent Skills format (with a `SKILL.md` per portal). Codex and Antigravity discover these automatically; the `/scrape` workflow in [.claude/skills/job-scraper/](.claude/skills/job-scraper/) orchestrates them.
+4. **Runtime-neutral index (Cursor / Antigravity):**
+   - [.workflow/](.workflow/) points at the canonical `.claude/` specs without duplicating them. Cursor also has a thin always-on rule at `.cursor/rules/ai-job-search.mdc`. Do not copy `.claude/` into `.cursor/` or `.agent/`.
