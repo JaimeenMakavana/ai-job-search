@@ -26,28 +26,29 @@ Secondary: company career pages via `site:` for named target companies once the 
 
 ## Query Categories
 
-Do not require an exact job title match. Prefer role-family keywords (frontend, React, Next.js, full stack, AI/LLM application engineering).
+Do not require an exact job title match. **Primary family: Senior Frontend** (React, Next.js, frontend architecture). Backend is a supporting skill, not the search title. Full-stack senior is adjacent only when frontend-led.
 
-### Priority 1: Frontend / React / Next.js
+### Priority 1: Senior Frontend / React / Next.js
 
 ```
-site:linkedin.com/jobs frontend engineer India
-site:linkedin.com/jobs React developer Bengaluru OR Pune OR Hyderabad
-site:linkedin.com/jobs Next.js developer India
-site:naukri.com "frontend engineer" Ahmedabad OR Bengaluru
-site:indeed.co.in "react developer" "India"
+site:linkedin.com/jobs "senior frontend" India
+site:linkedin.com/jobs "senior react" Bengaluru OR Pune OR Hyderabad OR Ahmedabad
+site:linkedin.com/jobs "senior" Next.js India
+site:naukri.com "senior frontend" Ahmedabad OR remote
+site:indeed.co.in "senior frontend engineer" India
 ```
 
 LinkedIn CLI examples (low volume; `--limit` small; `--format json`):
 
-- `-q "Frontend Engineer" -l "Ahmedabad, Gujarat, India"`
-- `-q "Frontend Engineer" -l "Bengaluru, Karnataka, India"`
-- `-q "React Developer" -l "Hyderabad, Telangana, India"`
-- `-q "Next.js" -l "Pune, Maharashtra, India"`
-- `-q "Frontend Engineer" -l "Mumbai, Maharashtra, India"`
-- `-q "Frontend Engineer" -l "Delhi, India"`
-- `-q "Frontend Engineer" -l "Chennai, Tamil Nadu, India"`
-- `-q "Frontend Engineer" -l "India" --remote remote`
+- `-q "Senior Frontend Engineer" -l "Ahmedabad, Gujarat, India"`
+- `-q "Senior Frontend Engineer" -l "Ahmedabad, Gujarat, India" --remote hybrid`
+- `-q "Senior React" -l "Bengaluru, Karnataka, India"`
+- `-q "Senior Frontend Engineer" -l "Hyderabad, Telangana, India"`
+- `-q "Senior Next.js" -l "Pune, Maharashtra, India"`
+- `-q "Senior Frontend Engineer" -l "Mumbai, Maharashtra, India"`
+- `-q "Senior Frontend Engineer" -l "Delhi, India"`
+- `-q "Senior Frontend Engineer" -l "Chennai, Tamil Nadu, India"`
+- `-q "Senior Frontend Engineer" -l "India" --remote remote`
 
 FreeHire CLI: `-q "frontend"` or `-q "react"` with `--country IN`, optional `--category frontend`, `--limit` modest. Discover city facet values from `/api/v1/jobs/facets` — do not invent them.
 
@@ -79,18 +80,12 @@ site:naukri.com developer React OR Next.js India
 
 ## Location Filter
 
-Acceptable for this fork (until the candidate profile narrows commute):
+Priority (user, 2026-08-15):
 
-- Ahmedabad
-- Bengaluru
-- Hyderabad
-- Pune
-- Mumbai
-- Delhi NCR
-- Chennai
-- Remote India (and remote roles that hire in India)
+1. **Remote abroad** (fully remote, international / not India-only)
+2. **Ahmedabad** (onsite/hybrid/remote in Ahmedabad)
 
-Skip roles that require relocation outside India unless the user asks.
+Other India metros are optional later, not this run.
 
 ## Language Filter
 

@@ -16,26 +16,33 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 <!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
 
-### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT - what was happening, what was the problem]
-**T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
-**A:** [WHAT YOU DID - specific actions, tools, methods]
-**R:** [OUTCOME - measurable results, adoption, impact]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 1. GoldenRay.cloud BFF / Server Components (frontend architecture)
+**S:** Highly interactive cloud-management product needing secured backend access without sacrificing performance.
+**T:** Architect the frontend approach.
+**A:** Hybrid Next.js Server Components + Proxy BFF; led CSR→SSR migration for KubeVirt, OpenStack, Redfish UIs with regression validation; frontend foundation to unify infrastructure services.
+**R:** Resume states production-grade cloud management interfaces and successful regression validation. No numeric KPIs on resume.
+**Use for:** architecture, Next.js, security vs performance, cross-team delivery
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 2. KEY.AI conversational platform (Dec 2024 – Jan 2026; real-time + GraphQL)
+**S:** Conversational product on REST chat workflows and a non-socket notification path.
+**T:** Improve responsiveness, maintainability, and latency of chat/notifications.
+**A:** Migrated chat REST→GraphQL; redesigned notifications to socket-based real-time; built prompt-driven community creation; React/Next.js/TypeScript/Tailwind UI with AI and backend teams.
+**R:** Resume claims improved responsiveness/maintainability and low-latency updates. No numeric KPIs on resume.
+**Use for:** GraphQL, real-time, AI product UI
 
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 3. Koffeekodes accounting/fintech + GSAP site (product frontend)
+**S:** Accounting platform and fintech product with high-interaction workflows and security needs; marketing site engagement.
+**T:** Lead frontend architecture; revamp marketing site.
+**A:** Frontend architecture for those products; GSAP marketing site; scalable React apps with reusable components and performance work.
+**R:** Resume cites improved engagement for the marketing site. No numeric KPIs on resume.
+**Use for:** fintech/security-conscious UI, leadership of frontend on a product
+
+### 4. Herryz / WebApster component libraries (scale / consistency)
+**S:** Multiple production web apps across e-commerce and enterprise at Herryz Info Tech (parent of WebApster).
+**T:** Deliver apps and improve velocity/consistency.
+**A:** React and modern JS production apps; reusable component libraries; collaboration with design and backend.
+**R:** Resume cites improved development velocity and UI consistency. No numeric KPIs on resume.
+**Use for:** design systems, collaboration, breadth of domain
 
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
 
